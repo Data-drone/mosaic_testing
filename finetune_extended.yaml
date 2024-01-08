@@ -49,7 +49,7 @@ parameters:
     dataset:
       hf_name: mosaicml/dolly_hhrlhf
       split: train
-      max_seq_length: ${max_seq_len}
+      max_seq_len: ${max_seq_len}
       allow_pad_trimming: false
       decoder_only_format: true
       shuffle: true
@@ -63,7 +63,7 @@ parameters:
   eval_loader:
     name: finetuning
     dataset:
-      hf_name: mosaicml/dolly_hhr_lhf
+      hf_name: mosaicml/dolly_hhrlhf
       split: test
       max_seq_len: ${max_seq_len}
       allow_pad_trimming: false
@@ -121,7 +121,7 @@ parameters:
 
   callbacks:
     speed_monitor:
-      window_size: 0
+      window_size: 10
 
     lr_monitor: {}
 
