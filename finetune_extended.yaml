@@ -35,8 +35,9 @@ parameters:
      pretrained_model_name_or_path: mosaicml/mpt-7b
      pretrained: true
      config_overrides:
-       attn_config: triton
-       attn_uses_sequence_id: false
+       attn_config: 
+         attn_impl: triton
+         attn_uses_sequence_id: false
 
   tokenizer:
     name: mosaicml/mpt-7b
@@ -48,7 +49,7 @@ parameters:
     dataset:
       hf_name: mosaicml/dolly_hhrlhf
       split: train
-      max_seq_lent: ${max_seq_len}
+      max_seq_length: ${max_seq_len}
       allow_pad_trimming: false
       decoder_only_format: true
       shuffle: true
@@ -59,7 +60,7 @@ parameters:
     persistent_workers: true
     timeout: 0
   
-  eval_dataloader:
+  eval_loader:
     name: finetuning
     dataset:
       hf_name: mosaicml/dolly_hhr_lhf
